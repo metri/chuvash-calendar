@@ -1,10 +1,14 @@
 title: The Chuvash Calendar | Чӑваш ҫулталӑк хисепӗ
 description: The traditional Chuvash Calendar is a lunisolar calendar | Чӑвашсен йӑлана кӗнӗ уйӑх-хӗвел ҫулталӑк хисепӗ.
-theme: minima
+theme: jekyll-theme-tactile
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-relative-links
 
-minima:
-  skin: auto
+relative_links:
+  enabled: true
+  collections: true
 
+include:
+  - LICENSE.md
