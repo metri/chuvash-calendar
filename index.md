@@ -6,8 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
     rows.forEach(row => {
         const yearCell = row.querySelector('td, th');
         if (yearCell && parseInt(yearCell.innerText) === currentYear) {
-            row.style.fontWeight = 'bold';
+            row.style.fontWeight = 'bolder';
             row.style.color = 'DarkOrange';
+            row.style.backgroundColor = 'DarkRed';
+            row.style.fontSize = '1.2em';
+            row.style.transform = 'scale(1.2)';
+            row.style.transformOrigin = 'center';
         }
     });
 });
