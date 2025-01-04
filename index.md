@@ -14,51 +14,19 @@
 </div>
 
 <style>
-@keyframes flip {
-    0% {
-        transform: rotateX(0deg);
+    .flip-block {
+        position: relative;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
     }
-    50% {
-        transform: rotateX(90deg);
+    h2 {
+        font-size: 3em;
+        margin: 0;
+        transition: transform 0.6s ease-in-out;
     }
-    100% {
-        transform: rotateX(180deg);
+    p {
+        font-size: 1.2em;
     }
-}
-
-.flip-container {
-    perspective: 1000px;
-}
-
-.flip-card {
-    width: 60px;
-    height: 60px;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: flip 1s infinite;
-}
-
-.flip-card .front, .flip-card .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.flip-card .back {
-    transform: rotateX(180deg);
-    background-color: #f0f0f0;
-}
-
-.flip-card .front {
-    background-color: #4CAF50;
-    color: white;
-}
 </style>
 
 <script>
@@ -189,26 +157,45 @@
         6: { chuvash: "Вырсарни кун", turkish: "Cumartesi", english: "Sunday" }
     };
 
-    function createFlipClock(value, lang) {
-        return `<div class="flip-container">
-                    <div class="flip-card">
-                        <div class="front">${daysOfWeek[value][lang]}</div>
-                        <div class="back">${daysOfWeek[value][lang]}</div>
-                    </div>
-                </div>`;
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentDay = currentDate.getDate();
+    const currentWeekday = currentDate.getDay();
+
+    function updateCalendar() {
+        const yearBlock = document.getElementById("year-block");
+        const monthBlock = document.getElementById("month-block");
+        const dayBlock = document.getElementById("day-block");
+
+        const yearElement = document.getElementById("year-number");
+        const yearNameElement = document.getElementById("year-name");
+        yearElement.innerText = currentYear;
+        yearNameElement.innerHTML = `${yearNames[currentYear]?.chuvash || 'Unknown'} <br> ${yearNames[currentYear]?.turkish || 'Unknown'} <br> ${yearNames[currentYear]?.english || 'Unknown'}`;
+
+        const monthElement = document.getElementById("month-name");
+        monthElement.innerText = months[currentMonth]?.chuvash || 'Unknown';
+        monthBlock.querySelector("p").innerHTML = `${months[currentMonth]?.turkish || 'Unknown'} <br> ${months[currentMonth]?.english || 'Unknown'}`;
+
+
+        const dayElement = document.getElementById("day-number");
+        const weekdayElement = document.getElementById("weekday-name");
+        dayElement.innerText = currentDay;
+        weekdayElement.innerHTML = `${daysOfWeek[currentWeekday]?.chuvash || 'Unknown'} <br> ${daysOfWeek[currentWeekday]?.turkish || 'Unknown'} <br> ${daysOfWeek[currentWeekday]?.english || 'Unknown'}`;
     }
 
-    let currentDay = new Date().getDay();
-    let currentHour = new Date().getHours();
-
-    document.getElementById('chuvash-day').innerHTML = createFlipClock(currentDay, 'chuvash');
-    document.getElementById('english-day').innerHTML = createFlipClock(currentDay, 'english');
-    document.getElementById('turkish-day').innerHTML = createFlipClock(currentDay, 'turkish');
+    updateCalendar();
 
     setInterval(() => {
-        currentDay = (currentDay + 1) % 7;
-        document.getElementById('chuvash-day').innerHTML = createFlipClock(currentDay, 'chuvash');
-        document.getElementById('english-day').innerHTML = createFlipClock(currentDay, 'english');
-        document.getElementById('turkish-day').innerHTML = createFlipClock(currentDay, 'turkish');
-    }, 1000); // Обновление каждую секунду для анимации
+        document.querySelectorAll(".flip-block h2").forEach(el => {
+            el.style.transform = "rotateX(180deg)";
+        });
+        setTimeout(() => {
+            updateCalendar();
+            document.querySelectorAll(".flip-block h2").forEach(el => {
+                el.style.transform = "rotateX(0)";
+            });
+        }, 600);
+    }, 60000);
 </script>
