@@ -1,121 +1,201 @@
+<div id="flip-calendar" style="display: flex; gap: 20px;">
+    <div class="flip-block" id="year-block" style="text-align: center;">
+        <h2 id="year-number">2024</h2>
+        <p id="year-name" style="font-size: smaller;">Арӑслан <br> Aslan <br> Lion 🦁</p>
+    </div>
+    <div class="flip-block" id="month-block" style="text-align: center;">
+        <h2 id="month-name">Кӑрлач</h2>
+        <p style="font-size: smaller;">Ocak <br> January</p>
+    </div>
+    <div class="flip-block" id="day-block" style="text-align: center;">
+        <h2 id="day-number">4</h2>
+        <p id="weekday-name" style="font-size: smaller;">Тунти кун <br> Pazartesi <br> Monday</p>
+    </div>
+</div>
+
+<style>
+    .flip-block {
+        position: relative;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+    }
+    h2 {
+        font-size: 3em;
+        margin: 0;
+        transition: transform 0.6s ease-in-out;
+    }
+    p {
+        font-size: 1.2em;
+    }
+</style>
+
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const currentYear = new Date().getFullYear();
-    const rows = document.querySelectorAll('table tr');
+    // dog-nail
+    const yearNames = {
+     2001: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2002: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2003: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2004: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2005: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2006: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2007: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2008: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2009: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2010: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2011: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2012: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+     2013: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2014: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2015: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2016: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2017: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2018: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2019: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2020: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2021: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2022: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2023: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2024: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+     2025: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2026: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2027: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2028: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2029: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2030: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2031: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2032: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2033: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2034: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2035: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2036: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+     2037: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2038: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2039: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2040: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2041: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2042: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2043: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2044: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2045: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2046: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2047: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2048: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+     2049: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2050: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2051: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2052: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2053: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2054: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2055: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2056: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2057: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2058: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2059: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2060: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+     2061: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2062: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2063: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2064: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2065: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2066: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2067: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2068: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2069: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2070: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2071: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2072: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+     2073: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2074: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2075: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2076: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2077: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2078: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2079: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2080: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2081: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2082: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2083: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2084: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+     2085: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+     2086: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+     2087: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+     2088: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+     2089: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+     2090: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+     2091: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+     2092: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+     2093: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+     2094: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+     2095: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+     2096: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" }
+    ;
 
-    rows.forEach(row => {
-        const yearCell = row.querySelector('td, th');
-        if (yearCell && parseInt(yearCell.innerText) === currentYear) {
-            row.style.fontWeight = 'bolder';
-            row.style.color = 'White';
-            row.style.backgroundColor = 'DarkRed';
-            row.style.fontSize = '1.1em';
-            row.style.transform = 'scale(1.1)';
-            row.style.transformOrigin = 'center';
-        }
-    });
-});
+    };
+    
+    const months = {
+        1: { chuvash: "Кӑрлач", turkish: "Ocak", english: "January" },
+        2: { chuvash: "Нарӑс", turkish: "Şubat", english: "February" },
+        3: { chuvash: "Пуш", turkish: "Mart", english: "March" },
+        4: { chuvash: "Ака", turkish: "Nisan", english: "April" },
+        5: { chuvash: "Ҫу", turkish: "Mayıs", english: "May" },
+        6: { chuvash: "Ҫӗртме", turkish: "Haziran", english: "June" },
+        7: { chuvash: "Утӑ", turkish: "Temmuz", english: "July" },
+        8: { chuvash: "Ҫурла", turkish: "Ağustos", english: "August" },
+        9: { chuvash: "Авӑн", turkish: "Eylül", english: "September" },
+        10: { chuvash: "Юпа", turkish: "Ekim", english: "October" },
+        11: { chuvash: "Чӳк", turkish: "Kasım", english: "November" },
+        12: { chuvash: "Раштав", turkish: "Aralık", english: "December" }
+    };
+    
+    const daysOfWeek = {
+        0: { chuvash: "Тунти кун", turkish: "Pazar", english: "Monday" },
+        1: { chuvash: "Ытлари кун", turkish: "Pazartesi", english: "Tuesday" },
+        2: { chuvash: "Юн кун", turkish: "Salı", english: "Wednesday" },
+        3: { chuvash: "Кӗҫнерни кун", turkish: "Çarşamba", english: "Thursday" },
+        4: { chuvash: "Эрне кун", turkish: "Perşembe", english: "Friday" },
+        5: { chuvash: "Шӑмат кун", turkish: "Cuma", english: "Saturday" },
+        6: { chuvash: "Вырсарни кун", turkish: "Cumartesi", english: "Sunday" }
+    };
+
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentDay = currentDate.getDate();
+    const currentWeekday = currentDate.getDay();
+
+    function updateCalendar() {
+        const yearBlock = document.getElementById("year-block");
+        const monthBlock = document.getElementById("month-block");
+        const dayBlock = document.getElementById("day-block");
+
+        const yearElement = document.getElementById("year-number");
+        const yearNameElement = document.getElementById("year-name");
+        yearElement.innerText = currentYear;
+        yearNameElement.innerHTML = `${yearNames[currentYear]?.chuvash || 'Unknown'} <br> ${yearNames[currentYear]?.turkish || 'Unknown'} <br> ${yearNames[currentYear]?.english || 'Unknown'}`;
+
+        const monthElement = document.getElementById("month-name");
+        monthElement.innerText = months[currentMonth]?.chuvash || 'Unknown';
+        monthBlock.querySelector("p").innerHTML = `${months[currentMonth]?.turkish || 'Unknown'} <br> ${months[currentMonth]?.english || 'Unknown'}`;
+
+
+        const dayElement = document.getElementById("day-number");
+        const weekdayElement = document.getElementById("weekday-name");
+        dayElement.innerText = currentDay;
+        weekdayElement.innerHTML = `${daysOfWeek[currentWeekday]?.chuvash || 'Unknown'} <br> ${daysOfWeek[currentWeekday]?.turkish || 'Unknown'} <br> ${daysOfWeek[currentWeekday]?.english || 'Unknown'}`;
+    }
+
+    updateCalendar();
+
+    setInterval(() => {
+        document.querySelectorAll(".flip-block h2").forEach(el => {
+            el.style.transform = "rotateX(180deg)";
+        });
+        setTimeout(() => {
+            updateCalendar();
+            document.querySelectorAll(".flip-block h2").forEach(el => {
+                el.style.transform = "rotateX(0)";
+            });
+        }, 600);
+    }, 60000);
 </script>
-
-
-| Year | Chuvash | Türkçe | English | Russian |
-|------|---------------------|------------------|-----------------------------------|------------------|
-| 2001 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2002 | Ут                  | At               | Horse                             | Конь             |
-| 2003 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2004 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2005 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2006 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2007 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2008 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2009 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2010 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2011 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2012 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2013 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2014 | Ут                  | At               | Horse                             | Конь             |
-| 2015 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2016 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2017 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2018 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2019 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2020 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2021 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2022 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2023 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2024 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2025 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2026 | Ут                  | At               | Horse                             | Конь             |
-| 2027 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2028 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2029 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2030 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2031 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2032 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2033 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2034 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2035 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2036 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2037 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2038 | Ут                  | At               | Horse                             | Конь             |
-| 2039 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2040 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2041 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2042 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2043 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2044 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2045 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2046 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2047 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2048 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2049 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2050 | Ут                  | At               | Horse                             | Конь             |
-| 2051 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2052 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2053 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2054 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2055 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2056 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2057 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2058 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2059 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2060 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2061 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2062 | Ут                  | At               | Horse                             | Конь             |
-| 2063 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2064 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2065 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2066 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2067 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2068 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2069 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2070 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2071 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2072 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2073 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2074 | Ут                  | At               | Horse                             | Конь             |
-| 2075 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2076 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2077 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2078 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2079 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2080 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2081 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2082 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2083 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2084 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2085 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2086 | Ут                  | At               | Horse                             | Конь             |
-| 2087 | Сурӑх               | Koyun            | Sheep                             | Овца             |
-| 2088 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
-| 2089 | Чӑх                 | Tavuk            | Chicken                           | Курица           |
-| 2090 | Йытӑ                | Köpek            | Dog                               | Собака           |
-| 2091 | Сысна               | Domuz            | Pig                               | Свинья           |
-| 2092 | Кушаккайӑк          | Fare             | Mouse                             | Мышь             |
-| 2093 | Ӗне                 | İnek             | Cow                               | Корова           |
-| 2094 | Парӑс               | Pars             | Leopard                           | Барс             |
-| 2095 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
-| 2096 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| 2097 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
-| 2098 | Ут                  | At               | Horse                             | Конь             |
-| 2099 | Сурӑх               | Koyun            | Sheep                             | Овца             |
