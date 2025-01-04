@@ -1,3 +1,18 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const currentYear = new Date().getFullYear();
+    const rows = document.querySelectorAll('table tr');
+
+    rows.forEach(row => {
+        const yearCell = row.querySelector('td, th');
+        if (yearCell && parseInt(yearCell.innerText) === currentYear) {
+            row.style.fontWeight = 'bold';
+            row.style.color = 'DarkOrange';
+        }
+    });
+});
+</script>
+
 
 | Year | Chuvash | Türkçe | English | Russian |
 |------|---------------------|------------------|-----------------------------------|------------------|
@@ -25,7 +40,7 @@
 | 2022 | Парӑс               | Pars             | Leopard                           | Барс             |
 | 2023 | Мулкач              | Tavşan           | Rabbit                            | Заяц             |
 | 2024 | Арӑслан             | Aslan            | Lion                              | Лев              |
-| **2025** | **Ҫӗлен**               | **Yılan**            | **Snake**                             | **Змея**             |
+| 2025 | Ҫӗлен               | Yılan            | Snake                             | Змея             |
 | 2026 | Ут                  | At               | Horse                             | Конь             |
 | 2027 | Сурӑх               | Koyun            | Sheep                             | Овца             |
 | 2028 | Пӗҫин               | Maymun           | Monkey                            | Обезьяна         |
