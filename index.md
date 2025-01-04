@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
             row.style.fontWeight = 'bolder';
             row.style.color = 'White';
             row.style.backgroundColor = 'DarkRed';
-            row.style.fontSize = '1.2em';
-            row.style.transform = 'scale(1.2)';
+            row.style.fontSize = '1.1em';
+            row.style.transform = 'scale(1.1)';
             row.style.transformOrigin = 'center';
         }
     });
