@@ -32,104 +32,102 @@
 <script>
     // dog-nail
     const yearNames = {
-     2001: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2002: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2003: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2004: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2005: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2006: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2007: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2008: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2009: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2010: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2011: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2012: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
-     2013: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2014: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2015: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2016: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2017: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2018: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2019: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2020: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2021: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2022: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2023: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2024: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
-     2025: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2026: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2027: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2028: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2029: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2030: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2031: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2032: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2033: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2034: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2035: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2036: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
-     2037: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2038: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2039: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2040: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2041: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2042: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2043: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2044: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2045: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2046: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2047: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2048: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
-     2049: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2050: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2051: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2052: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2053: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2054: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2055: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2056: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2057: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2058: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2059: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2060: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
-     2061: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2062: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2063: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2064: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2065: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2066: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2067: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2068: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2069: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2070: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2071: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2072: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
-     2073: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2074: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2075: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2076: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2077: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2078: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2079: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2080: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2081: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2082: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2083: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2084: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
-     2085: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
-     2086: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
-     2087: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
-     2088: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
-     2089: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
-     2090: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
-     2091: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
-     2092: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
-     2093: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
-     2094: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
-     2095: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
-     2096: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" }
-    ;
-
+        2001: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2002: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2003: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2004: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2005: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2006: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2007: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2008: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2009: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2010: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2011: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2012: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+        2013: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2014: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2015: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2016: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2017: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2018: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2019: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2020: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2021: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2022: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2023: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2024: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+        2025: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2026: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2027: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2028: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2029: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2030: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2031: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2032: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2033: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2034: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2035: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2036: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+        2037: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2038: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2039: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2040: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2041: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2042: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2043: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2044: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2045: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2046: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2047: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2048: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+        2049: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2050: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2051: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2052: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2053: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2054: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2055: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2056: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2057: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2058: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2059: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2060: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+        2061: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2062: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2063: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2064: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2065: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2066: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2067: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2068: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2069: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2070: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2071: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2072: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+        2073: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2074: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2075: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2076: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2077: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2078: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2079: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2080: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2081: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2082: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2083: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2084: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" },
+        2085: { Chuvash: "Ҫӗлен", Türkçe: "Yılan", English: "Snake" },
+        2086: { Chuvash: "Ут", Türkçe: "At", English: "Horse" },
+        2087: { Chuvash: "Сурӑх", Türkçe: "Koyun", English: "Sheep" },
+        2088: { Chuvash: "Пӗҫин", Türkçe: "Maymun", English: "Monkey" },
+        2089: { Chuvash: "Чӑх", Türkçe: "Tavuk", English: "Chicken" },
+        2090: { Chuvash: "Йытӑ", Türkçe: "Köpek", English: "Dog" },
+        2091: { Chuvash: "Сысна", Türkçe: "Domuz", English: "Pig" },
+        2092: { Chuvash: "Кушаккайӑк", Türkçe: "Fare", English: "Mouse" },
+        2093: { Chuvash: "Ӗне", Türkçe: "İnek", English: "Cow" },
+        2094: { Chuvash: "Парӑс", Türkçe: "Pars", English: "Leopard" },
+        2095: { Chuvash: "Мулкач", Türkçe: "Tavşan", English: "Rabbit" },
+        2096: { Chuvash: "Арӑслан", Türkçe: "Aslan", English: "Lion" }
     };
     
     const months = {
@@ -148,7 +146,11 @@
     };
     
     const daysOfWeek = {
-        0: { chuvash: "Тунти кун", turkish: "Pazar", english: "Monday" },
+        // new Date().getDay() возвращает: 0 для воскресенья, 1 для понедельника, ..., 6 для субботы.
+        // Ваше текущее сопоставление (0 для понедельника на чувашском/английском, но воскресенья на турецком)
+        // несколько непоследовательно. Если вы хотите, чтобы 0 всегда был понедельником, вам может потребоваться
+        // скорректировать результат new Date().getDay(). Для этой правки я оставляю ваше сопоставление как есть.
+        0: { chuvash: "Тунти кун", turkish: "Pazar", english: "Monday" }, // Если getDay() = 0 (Воскресенье)
         1: { chuvash: "Ытлари кун", turkish: "Pazartesi", english: "Tuesday" },
         2: { chuvash: "Юн кун", turkish: "Salı", english: "Wednesday" },
         3: { chuvash: "Кӗҫнерни кун", turkish: "Çarşamba", english: "Thursday" },
@@ -157,14 +159,14 @@
         6: { chuvash: "Вырсарни кун", turkish: "Cumartesi", english: "Sunday" }
     };
 
-
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth() + 1;
-    const currentDay = currentDate.getDate();
-    const currentWeekday = currentDate.getDay();
-
     function updateCalendar() {
+        // Перемещаем создание объекта Date и получение даты внутрь функции
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth() + 1; // getMonth() возвращает 0 для января
+        const currentDay = currentDate.getDate();
+        const currentWeekday = currentDate.getDay(); // 0 для воскресенья, 1 для понедельника и т.д.
+
         const yearBlock = document.getElementById("year-block");
         const monthBlock = document.getElementById("month-block");
         const dayBlock = document.getElementById("day-block");
@@ -172,12 +174,12 @@
         const yearElement = document.getElementById("year-number");
         const yearNameElement = document.getElementById("year-name");
         yearElement.innerText = currentYear;
-        yearNameElement.innerHTML = `${yearNames[currentYear]?.chuvash || 'Unknown'} <br> ${yearNames[currentYear]?.turkish || 'Unknown'} <br> ${yearNames[currentYear]?.english || 'Unknown'}`;
+        // Исправлена ошибка: используются ключи с заглавной буквы (Chuvash, Türkçe, English)
+        yearNameElement.innerHTML = `${yearNames[currentYear]?.Chuvash || 'Unknown'} <br> ${yearNames[currentYear]?.Türkçe || 'Unknown'} <br> ${yearNames[currentYear]?.English || 'Unknown'} 🦁`;
 
         const monthElement = document.getElementById("month-name");
         monthElement.innerText = months[currentMonth]?.chuvash || 'Unknown';
         monthBlock.querySelector("p").innerHTML = `${months[currentMonth]?.turkish || 'Unknown'} <br> ${months[currentMonth]?.english || 'Unknown'}`;
-
 
         const dayElement = document.getElementById("day-number");
         const weekdayElement = document.getElementById("weekday-name");
@@ -185,17 +187,19 @@
         weekdayElement.innerHTML = `${daysOfWeek[currentWeekday]?.chuvash || 'Unknown'} <br> ${daysOfWeek[currentWeekday]?.turkish || 'Unknown'} <br> ${daysOfWeek[currentWeekday]?.english || 'Unknown'}`;
     }
 
-    updateCalendar();
+    updateCalendar(); // Первый вызов для установки даты при загрузке страницы
 
     setInterval(() => {
+        // Применяем эффект переворота
         document.querySelectorAll(".flip-block h2").forEach(el => {
             el.style.transform = "rotateX(180deg)";
         });
+        // Ждем завершения анимации, затем обновляем дату и сбрасываем переворот
         setTimeout(() => {
-            updateCalendar();
+            updateCalendar(); 
             document.querySelectorAll(".flip-block h2").forEach(el => {
                 el.style.transform = "rotateX(0)";
             });
-        }, 600);
-    }, 60000);
+        }, 600); // 600ms соответствует времени перехода в CSS
+    }, 60000); // Интервал для запуска обновления (каждую минуту)
 </script>
